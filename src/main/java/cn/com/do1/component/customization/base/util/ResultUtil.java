@@ -1,7 +1,10 @@
 package cn.com.do1.component.customization.base.util;
 
+import cn.com.do1.common.util.AssertUtil;
 import cn.com.do1.common.util.string.StringUtil;
 import cn.com.do1.component.customization.base.vo.Result;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 
 /**
  * 返回结果工具类
@@ -49,6 +52,23 @@ public class ResultUtil {
         result.setDesc(desc);
         result.setData(o);
         return result;
+    }
+
+    /**
+     * 返回表单校验的结果
+     * @param result
+     * @return
+     */
+    public static Result formValid(BindingResult result) {
+        String errorMsg = null;
+        for (FieldError fieldError : result.getFieldErrors()) {
+            if (AssertUtil.isEmpty(errorMsg)){
+                errorMsg = fieldError.getDefaultMessage();
+            }else {
+                errorMsg += "," + fieldError.getDefaultMessage();
+            }
+        }
+        return fail(FAIL_CODE,errorMsg);
     }
 
 }
