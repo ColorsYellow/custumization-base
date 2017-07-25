@@ -54,21 +54,30 @@ public class ResultUtil {
         return result;
     }
 
+    public static Result success(String desc) {
+        return success(null, desc);
+    }
+
+    public static Result success() {
+        return success(null, SUCCESS_MSG);
+    }
+
     /**
      * 返回表单校验的结果
+     *
      * @param result
      * @return
      */
     public static Result formValid(BindingResult result) {
         String errorMsg = null;
         for (FieldError fieldError : result.getFieldErrors()) {
-            if (AssertUtil.isEmpty(errorMsg)){
+            if (AssertUtil.isEmpty(errorMsg)) {
                 errorMsg = fieldError.getDefaultMessage();
-            }else {
+            } else {
                 errorMsg += "," + fieldError.getDefaultMessage();
             }
         }
-        return fail(FAIL_CODE,errorMsg);
+        return fail(FAIL_CODE, errorMsg);
     }
 
 }
