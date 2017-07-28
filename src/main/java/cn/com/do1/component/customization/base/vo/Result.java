@@ -1,7 +1,5 @@
 package cn.com.do1.component.customization.base.vo;
 
-import cn.com.do1.common.exception.BaseException;
-
 /**
  * 统一返回结果类
  * @author zhibinliu
@@ -33,4 +31,5 @@ public class Result {
     public void setData(Object data) {
         this.data = data;
     }
+
 }

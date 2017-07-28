@@ -39,8 +39,8 @@ public class BaseController {
      * @param o 对象信息
      * @return
      */
-    public Result addData(Object o) {
-        return addData(o, ResultUtil.SUCCESS_MSG);
+    public Result addResult(Object o) {
+        return addResult(o, ResultUtil.SUCCESS_MSG);
     }
 
     /**
@@ -50,7 +50,7 @@ public class BaseController {
      * @param desc 返回文字说明
      * @return
      */
-    public Result addData(Object o, String desc) {
+    public Result addResult(Object o, String desc) {
         return ResultUtil.success(o, desc);
     }
 
